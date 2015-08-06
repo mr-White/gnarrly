@@ -1,5 +1,5 @@
-<md-content layout-padding>
-  <div layout="column">
+
+  <!-- <div layout="column">
     <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center"
                    ng-hide="$root.currentUser || $root.loggingIn">
       <span>Log in to discover, explore, and conquer!</span>
@@ -9,12 +9,12 @@
       <img ng-src="{{ $root.currentUser.profile.avatar || 'image/default_avatar.jpg'}}" alt="avatar" />
       {{ $root.currentUser.profile.name }}
     </md-whiteframe>
-  </div>
+  </div> -->
 
-  <div layout="column">
-    <h2 class="md-headline">Spots:</h2>
+  
+    <!-- <h2 class="md-headline">Spots:</h2> -->
 
-    <form layout="row">
+    <!-- <form layout="row">
       <md-input-container md-no-float>
         <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
         <input type="text" ng-model="search" id="search" placeholder="Search" aria-label="Search">
@@ -26,14 +26,13 @@
           <md-option value="-1">Descending</md-option>
         </md-select>
       </md-input-container>
-    </form>
-    <div class="angular-google-map-container">
+    </form> -->
+    <div class="angular-google-map-container" style="height:500px">
       <ui-gmap-google-map center="map.center" zoom="map.zoom">
         <ui-gmap-markers models="parties" coords="'location'" click="onClicked()"
                          fit="true" idkey="'_id'" doRebuildAll="true">
         </ui-gmap-markers>
       </ui-gmap-google-map>
     </div>
-  </div>
+
   <!-- <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls> -->
-</md-content>

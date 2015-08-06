@@ -1,8 +1,46 @@
 body {
   background-color: rgba(0,0,0,.04);
+  position: relative;
+  // overflow-y: hidden;
 
   .navbar {
     background-color: #ffffff;
+  }
+}
+
+/**
+ * Debug/Prototype Fixed Top Nav Bar
+ */
+.navigation-bar {
+    position: absolute;
+    height: 40px;
+    min-height: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/**
+ * Main Container for App
+ */
+.app-container {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+}
+
+/**
+ * Google Map Container
+ */
+.angular-google-map-container {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  .angular-google-map {
+  	height: 100%;
   }
 }
 

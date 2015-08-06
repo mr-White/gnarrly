@@ -1,0 +1,22 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <title>Gnarrly</title>
+</head>
+
+<body layout="column">
+  <md-toolbar md-scroll-shrink layout="row" layout-align="start center" layout-padding>
+    <div>
+      <ul class="inline-list">
+        <li><a href="/zones">Zones</a></li>
+        <li><a href="/spots">Spots</a></li>
+      </ul>
+
+    </div>
+    <span flex></span>
+    <div class="navbar-right navbar-text">
+      <meteor-include src="loginButtons"></meteor-include>
+    </div>
+  </md-toolbar>
+  <div ui-view class="container-fluid"></div>
+</body>

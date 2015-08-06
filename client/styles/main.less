@@ -1,3 +1,18 @@
+/**
+ * Includes
+ */
+@import "../component/parties/styles/parties.import.less";
+
+/**
+ * Variables
+ */
+@purple: #830FB2;
+@yellow: #FFB211;
+
+/**
+ * Default Styles
+ */
+
 body {
   background-color: rgba(0,0,0,.04);
   position: relative;
@@ -8,16 +23,30 @@ body {
   }
 }
 
+a {
+	text-decoration: none;
+	&:hover {
+		color: lighten(@yellow, 10%);
+	}
+}
+
 /**
  * Debug/Prototype Fixed Top Nav Bar
  */
 .navigation-bar {
+	background-color: @purple !important;
     position: absolute;
     height: 40px;
     min-height: 40px;
     top: 0;
     left: 0;
     width: 100%;
+    a {
+    	color: @yellow;
+    	&:hover {
+    		color: lighten(@yellow, 10%);
+    	}
+    }
 }
 
 /**
@@ -43,4 +72,22 @@ body {
   }
 }
 
-@import "../component/parties/styles/parties.import.less";
+
+/*******************************************
+ *   REMOVE THIS AFTER NAV BAR is removed  *
+ *******************************************/
+#login-buttons a {
+	text-decoration: none !important;
+}
+#login-dropdown-list.accounts-dialog {
+	background-color: @purple;
+}
+#login-buttons .login-button, .accounts-dialog .login-button {
+	background-color: @yellow;
+	color: @purple;
+	border: 1px solid lighten(@yellow, 10%);
+	font-weight: bold;
+	&:hover {
+		background-color: lighten(@yellow, 10%);
+	}
+}

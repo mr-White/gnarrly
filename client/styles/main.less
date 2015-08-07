@@ -131,6 +131,17 @@ a {
 #login-buttons {
 	@purpleButton();
 }
+#login-dropdown-list.accounts-dialog {
+  left: -2px;
+  top: 39px;
+  a {
+  	color: @yellow;
+  	float: right;
+  	&:hover {
+  		color: lighten(@yellow, 10%);
+  	}
+  }
+}
 
 /**
  * Create Content Button

@@ -1,22 +1,44 @@
 /**
+ * Variables
+ */
+@purple: #472A59;
+@yellow: #F2CB05;
+@white: #F2F2E4;
+@accent: #A6837B;
+@sand: #F2D888;
+
+// another style - modern profesional look
+@darkPurple: #2B1B2E;
+@lightPurple: #54344D;
+@white2: #FFFFD6;
+@washLight: #B89E95;
+@washDark: #6E444F;
+
+// another style - playful purples and orange
+@pinkPurple: #EF92FF;
+@lightPurple: #AF4CD6;
+@purple2: #AF4CD6;
+@orange: #FFA70C;
+@darkRose: #59103E;
+
+// another style - has greens, purple and orange
+@orange2: #EBA717;
+@darkPurple2: #730F9A;
+@lightPurple2: #A500E7;
+@lightGreen: #12B46B;
+@green: #089A59;
+
+/**
  * Includes
  */
 @import "../component/parties/styles/parties.import.less";
 
-/**
- * Variables
- */
-@purple: #830FB2;
-@yellow: #FFB211;
 
 /**
  * Default Styles
  */
-
 body {
   background-color: rgba(0,0,0,.04);
-  position: relative;
-  // overflow-y: hidden;
 
   .navbar {
     background-color: #ffffff;
@@ -57,7 +79,7 @@ a {
     bottom: 0;
     left: 0;
     width: 100%;
-    bottom: 40px; // TODO Set to 0 when the navigation bar is removed
+    // bottom: 40px; // TODO Set to 0 when the navigation bar is removed
     top: 0;
 }
 
@@ -65,11 +87,20 @@ a {
  * Google Map Container
  */
 .angular-google-map-container {
-  height: 100%;
-  margin-top: 40px; // TODO Remove this when the navigation bar is removed
+	height: 100%;
+	margin-top: 40px;
   .angular-google-map {
   	height: 100%;
   }
+}
+
+/**
+ * User Interface Container
+ */
+.user-interface-container {
+	height: 100%;
+  	margin-top: 40px; // TODO Remove this when the navigation bar is removed
+  	position: relative;
 }
 
 

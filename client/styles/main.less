@@ -97,10 +97,31 @@ a {
 /**
  * User Interface Container
  */
+.user-interface-container, .ui-top-left, .ui-top-right, .ui-bot-left, .ui-bot-right {
+	position: absolute;
+}
 .user-interface-container {
-	height: 100%;
-  	margin-top: 40px; // TODO Remove this when the navigation bar is removed
-  	position: relative;
+  	height: 100%;
+  	width: 100%;
+    margin-top: 40px; // TODO Remove this when the navigation bar is removed
+    top: 0;
+}
+
+.ui-top-left {
+	left: 0;
+	top: 0;
+}
+.ui-top-right {
+	right: 0;
+	top: 0;
+}
+.ui-bot-left {
+	bottom: 40px; // TODO Set to 0 when the navigation bar is removed
+	left: 0;
+}
+.ui-bot-right {
+	bottom: 40px; // TODO Set to 0 when the navigation bar is removed
+	right: 0;
 }
 
 

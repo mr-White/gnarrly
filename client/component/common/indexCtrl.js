@@ -19,6 +19,9 @@ angular.module("gnarrly").controller("IndexCtrl",
           vm.initialPageLoading = false;
         },1500);
     });
+    // uiGmapGoogleMapApi.then(function(maps) {
+    //   vm.initialPageLoading = false;
+    // });
 
     
     $rootScope.$watch('currentUser', function(newValue, oldValue) {
@@ -47,12 +50,37 @@ angular.module("gnarrly").controller("IndexCtrl",
           };
         });
 
+        var styleArray = [
+          {
+            featureType: "all",
+            stylers: [
+              { saturation: -80 }
+            ]
+          },{
+            featureType: "road.arterial",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#00ffee" },
+              { saturation: 50 }
+            ]
+          },{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
+
         $scope.map = {
           center: {
             latitude: 45,
             longitude: -73
           },
-          zoom: 8
+          zoom: 8,
+          options: {
+            styles: styleArray
+          }
         };
       });
     });

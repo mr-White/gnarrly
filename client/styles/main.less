@@ -31,8 +31,9 @@
 /**
  * Includes
  */
+@import "mixins.import.less";
 @import "../component/parties/styles/parties.import.less";
-
+@import "animations.import.less";
 
 /**
  * Default Styles
@@ -47,6 +48,7 @@ body {
 
 a {
 	text-decoration: none;
+	color: @yellow;
 	&:hover {
 		color: lighten(@yellow, 10%);
 	}
@@ -81,20 +83,67 @@ a {
 }
 
 .ui-top-left {
-	left: 0;
-	top: 0;
+	left: 80px;
+	top: 25px;
 }
-.ui-top-right {
-	right: 0;
-	top: 0;
+.ui-top-right { // zone name position
+	left: 7px;
+    bottom: 105px;
 }
 .ui-bot-left {
-	bottom: 0; // TODO Set to 0 when the navigation bar is removed
-	left: 0;
+	bottom: 30px;
+    left: 7px;
 }
 .ui-bot-right {
-	bottom: 0; // TODO Set to 0 when the navigation bar is removed
-	right: 0;
+	bottom: 30px; 
+	right: 30px;
+}
+
+/**
+ * Zone Name
+ */
+.marker-name-alert {
+    @purpleButton();
+    h3 {
+    	margin: 0;
+    }
+}
+
+/**
+ * Gnarrly Logo
+ */
+.logo {
+	@purpleButton();
+	a {
+		color: @yellow;
+		&:hover {
+			color: lighten(@yellow, 10%);
+		}
+		h1 {
+			margin: 0;
+		}
+	}
+}
+
+/**
+ * User Auth + Menu
+ */
+#login-buttons {
+	@purpleButton();
+}
+
+/**
+ * Create Content Button
+ */
+.ui-add-btn {
+	@purpleButton();
+	border-radius: 50%;
+	width: 90px;
+	height: 90px;
+	text-align: center;
+	a {
+		font-size: 64px;
+	}
 }
 
 

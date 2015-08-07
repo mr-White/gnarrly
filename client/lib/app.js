@@ -1,5 +1,6 @@
 angular.module('gnarrly',[
   'angular-meteor',
+  'ngAnimate',
   'ui.router',
   'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',

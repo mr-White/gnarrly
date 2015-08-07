@@ -1,6 +1,10 @@
-angular.module("gnarrly").controller("IndexCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog', '$filter',
-  function($scope, $meteor, $rootScope, $state, $mdDialog, $filter){
+angular.module("gnarrly").controller("IndexCtrl", 
+  ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog', '$filter', 'uiGmapIsReady', '$timeout',
+  function($scope, $meteor, $rootScope, $state, $mdDialog, $filter, uiGmapIsReady, $timeout){
 
+    var vm = this;
+
+    vm.initialPageLoading = true;
     $scope.page = 1;
     $scope.perPage = 3;
     $scope.sort = { name: 1 };
@@ -8,6 +12,13 @@ angular.module("gnarrly").controller("IndexCtrl", ['$scope', '$meteor', '$rootSc
 
     $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
     $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
+
+    // On google map is ready, show the ui controls
+    uiGmapIsReady.promise(1).then(function(instances) {
+        $timeout(function(){
+          vm.initialPageLoading = false;
+        },1500);
+    });
 
     
     $rootScope.$watch('currentUser', function(newValue, oldValue) {

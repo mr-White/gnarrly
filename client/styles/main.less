@@ -53,25 +53,6 @@ a {
 }
 
 /**
- * Debug/Prototype Fixed Top Nav Bar
- */
-.navigation-bar {
-	background-color: @purple !important;
-    position: absolute;
-    height: 40px;
-    min-height: 40px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    a {
-    	color: @yellow;
-    	&:hover {
-    		color: lighten(@yellow, 10%);
-    	}
-    }
-}
-
-/**
  * Main Container for App
  */
 .app-container {
@@ -79,7 +60,6 @@ a {
     bottom: 0;
     left: 0;
     width: 100%;
-    // bottom: 40px; // TODO Set to 0 when the navigation bar is removed
     top: 0;
 }
 
@@ -88,7 +68,6 @@ a {
  */
 .angular-google-map-container {
 	height: 100%;
-	margin-top: 40px;
   .angular-google-map {
   	height: 100%;
   }
@@ -97,14 +76,8 @@ a {
 /**
  * User Interface Container
  */
-.user-interface-container, .ui-top-left, .ui-top-right, .ui-bot-left, .ui-bot-right {
+.ui-top-left, .ui-top-right, .ui-bot-left, .ui-bot-right {
 	position: absolute;
-}
-.user-interface-container {
-  	height: 100%;
-  	width: 100%;
-    margin-top: 40px; // TODO Remove this when the navigation bar is removed
-    top: 0;
 }
 
 .ui-top-left {
@@ -116,11 +89,11 @@ a {
 	top: 0;
 }
 .ui-bot-left {
-	bottom: 40px; // TODO Set to 0 when the navigation bar is removed
+	bottom: 0; // TODO Set to 0 when the navigation bar is removed
 	left: 0;
 }
 .ui-bot-right {
-	bottom: 40px; // TODO Set to 0 when the navigation bar is removed
+	bottom: 0; // TODO Set to 0 when the navigation bar is removed
 	right: 0;
 }
 

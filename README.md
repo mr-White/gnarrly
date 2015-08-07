@@ -1,11 +1,13 @@
-# gnarrly
+# Gnarrly
 Meteor+Angular App
 
-cd into root folder of app and run
-meteor run
+Open your favorite terminal and cd into the root folder of the cloned project repo. Run the following command:
+**meteor run**
 
 That will get the web app started
 
-meteor ios 
-
-will boot up the app with cordova and launch it in the iOS simulator
+## File Structure
+Client folder is dedicated to the client side app
+Server folder is dedicated to the server app
+Model folder holds all the model blueprints (shared between the 2 apps)
+Public folder is an assets folder for serving pictures, downloads, etc.

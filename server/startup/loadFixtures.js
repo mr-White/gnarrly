@@ -1,3 +1,6 @@
+// URL
+Meteor.absoluteUrl.defaultOptions.rootUrl = "http://gnarr.ly/beta";
+
 // Parties
 Meteor.startup(function () {
   if (Parties.find().count() === 0) {
@@ -38,3 +41,4 @@ Meteor.startup(function() {
     }
   }
 });
+

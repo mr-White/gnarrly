@@ -1,5 +1,3 @@
-Meteor.absoluteUrl.defaultOptions.rootUrl = "http://gnarr.ly/beta";
-
 angular.module('gnarrly',[
   'angular-meteor',
   'ngAnimate',

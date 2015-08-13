@@ -19,10 +19,10 @@ angular.module("gnarrly").config(['$urlRouterProvider', '$stateProvider', '$loca
         templateUrl: 'client/component/parties/views/parties-list.ng.html',
         controller: 'PartiesListCtrl'
       })
-      .state('partyDetails', {
-        url: '/parties/:partyId',
-        templateUrl: 'client/component/parties/views/party-details.ng.html',
-        controller: 'PartyDetailsCtrl',
+      .state('zoneDetails', {
+        url: '/zone/:zoneId',
+        templateUrl: 'client/component/zones/views/zone-details.ng.html',
+        controller: 'ZoneDetailsCtrl',
         resolve: {
           "currentUser": ["$meteor", function($meteor){
             return $meteor.requireUser();

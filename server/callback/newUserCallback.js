@@ -11,12 +11,12 @@ Accounts.onCreateUser(function(options, user) {
   		// Profile Picture
   		if (_.isString(user.services.twitter.profile_image_url)) {
   			options.profile.avatar = user.services.twitter.profile_image_url;
-		}
+		  }
 
-		// User alias (screen name)
-		if (_.isString(user.services.twitter.screenName)) {
-			options.profile.alias = user.services.twitter.screenName;
-		}
+  		// User alias (screen name)
+  		if (_.isString(user.services.twitter.screenName)) {
+  			options.profile.alias = user.services.twitter.screenName;
+  		}
   	}
 
   	// Facebook

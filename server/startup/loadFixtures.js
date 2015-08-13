@@ -1,9 +1,3 @@
-// TODO Move to Config 
-// Base root URL
-Meteor.startup(function () {
-  Meteor.absoluteUrl.defaultOptions.rootUrl = "http://gnarr.ly/beta";
-});
-
 // Parties
 Meteor.startup(function () {
   if (Parties.find().count() === 0) {

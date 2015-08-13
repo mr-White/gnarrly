@@ -5,13 +5,6 @@ angular.module("gnarrly").controller("IndexCtrl",
     var vm = this;
 
     vm.initialPageLoading = true;
-    $scope.page = 1;
-    $scope.perPage = 3;
-    $scope.sort = { name: 1 };
-    $scope.orderProperty = '1';
-
-    $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
-    $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
 
     // On google map is ready, show the ui controls
     uiGmapIsReady.promise(1).then(function(instances) {
@@ -19,74 +12,83 @@ angular.module("gnarrly").controller("IndexCtrl",
           vm.initialPageLoading = false;
         },1500);
     });
-    // uiGmapGoogleMapApi.then(function(maps) {
-    //   vm.initialPageLoading = false;
+
+    $scope.page = 1;
+    $scope.perPage = 3;
+    $scope.sort = { name: 1 };
+    $scope.orderProperty = '1';
+
+    $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
+    $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
+    
+    // $rootScope.$watch('currentUser', function(newValue, oldValue) {
+    //   if (newValue !== oldValue) {
+    //     console.log('user: ',newValue);
+    //   }
+    // });
+
+    // $scope.zones = $meteor.collection(function() {
+    //   return Zones.find({}, {
+    //     sort : $scope.getReactively('sort')
+    //   });
     // });
 
     
-    $rootScope.$watch('currentUser', function(newValue, oldValue) {
-      if (newValue !== oldValue) {
-        console.log('user: ',newValue);
-      }
-    });
+    $meteor.subscribe('zones', {
+      limit: parseInt($scope.getReactively('perPage')),
+      skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
+      sort: $scope.getReactively('sort')
+    }).then(function(zonesHandle) {
+      // Zones
+      $scope.zones = $meteor.collection(Zones);
+      // $scope.zonesCount = $meteor.object(Counts ,'numberOfZones', false);
 
-    $scope.parties = $meteor.collection(function() {
-      return Parties.find({}, {
-        sort : $scope.getReactively('sort')
-      });
-    });
-
-    $meteor.autorun($scope, function() {
-      $meteor.subscribe('parties', {
-        limit: parseInt($scope.getReactively('perPage')),
-        skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
-        sort: $scope.getReactively('sort')
-      }, $scope.getReactively('search')).then(function() {
-        $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
-
-        $scope.parties.forEach( function (party) {
-          party.onClicked = function () {
-            $state.go('partyDetails', {partyId: party._id});
-          };
-        });
-
-        var styleArray = [
-          {
-            featureType: "all",
-            stylers: [
-              { saturation: -80 }
-            ]
-          },{
-            featureType: "road.arterial",
-            elementType: "geometry",
-            stylers: [
-              { hue: "#00ffee" },
-              { saturation: 50 }
-            ]
-          },{
-            featureType: "poi.business",
-            elementType: "labels",
-            stylers: [
-              { visibility: "off" }
-            ]
-          }
-        ];
-
-        $scope.map = {
-          center: {
-            latitude: 45,
-            longitude: -73
-          },
-          zoom: 8,
-          options: {
-            styles: styleArray
-          }
+      // Setup click events
+      $scope.zones.forEach( function (zone) {
+        zone.onClicked = function () {
+          $state.go('zoneDetails', {zoneId: zone._id});
         };
       });
+
+      // Map Style - needs to go in map service
+      var styleArray = [
+        {
+          featureType: "all",
+          stylers: [
+            { saturation: -80 }
+          ]
+        },{
+          featureType: "road.arterial",
+          elementType: "geometry",
+          stylers: [
+            { hue: "#00ffee" },
+            { saturation: 50 }
+          ]
+        },{
+          featureType: "poi.business",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+        }
+      ];
+
+      // Map default coordinates, zoom, --- again map service
+      $scope.map = {
+        center: {
+          latitude: 45,
+          longitude: -73
+        },
+        zoom: 8,
+        options: {
+          styles: styleArray
+        }
+      };
     });
+    
 
     $scope.remove = function(party){
-      $scope.parties.splice( $scope.parties.indexOf(party), 1 );
+      $scope.zones.splice( $scope.zones.indexOf(party), 1 );
     };
 
     $scope.updateDescription = function($data, image) {
@@ -129,7 +131,7 @@ angular.module("gnarrly").controller("IndexCtrl",
         });
       }
 
-      $scope.parties.push($scope.newParty);
+      $scope.zones.push($scope.newParty);
       $scope.newPartyImages = [];
       $scope.newParty = {};
     };
@@ -155,10 +157,10 @@ angular.module("gnarrly").controller("IndexCtrl",
       return Meteor.users.findOne(userId);
     };
 
-    $scope.creator = function(party){
-      if (!party)
+    $scope.creator = function(zone){
+      if (!zone)
         return;
-      var owner = $scope.getUserById(party.owner);
+      var owner = $scope.getUserById(zone.owner);
       if (!owner)
         return "nobody";
 
@@ -170,8 +172,9 @@ angular.module("gnarrly").controller("IndexCtrl",
       return owner;
     };
 
-    $scope.rsvp = function(partyId, rsvp){
-      $meteor.call('rsvp', partyId, rsvp).then(
+    // convert this into check-in
+    $scope.rsvp = function(zoneId, rsvp){
+      $meteor.call('rsvp', zoneId, rsvp).then(
         function(data){
           console.log('success responding', data);
         },

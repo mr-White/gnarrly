@@ -1,7 +1,3 @@
-/**
- * Config
- */
-
 (function() {
     'use strict';
 
@@ -9,6 +5,9 @@
         .module('gnarrly')
         .config(mainConfig);
 
+    /**
+	 * Main Config
+	 */
     function mainConfig($mdIconProvider) {
     	// Angular Material Icons
         $mdIconProvider

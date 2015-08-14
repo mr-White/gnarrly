@@ -14,6 +14,8 @@
     function layoutController(mapService, $timeout) {
         var vm = this;
 
+        // After the map loads, the ovrlayed UI 
+        // waits this long before appearing
         var uiLoadDelay = 1500; // milli-seconds
 
         activate();

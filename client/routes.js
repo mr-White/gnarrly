@@ -31,7 +31,7 @@ angular.module("gnarrly").config(['$urlRouterProvider', '$stateProvider', '$loca
       })
       .state('home', {
         url: '/',
-        templateUrl: 'client/component/common/index.ng.html',
+        templateUrl: 'client/component/common/views/index.ng.html',
         controller: 'IndexCtrl',
         controllerAs: 'IdxCtrl',
         bindToController: true

@@ -1,91 +1,86 @@
-angular.module("gnarrly").controller("IndexCtrl", 
-  ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog', '$filter', 'uiGmapIsReady', '$timeout',
-  function($scope, $meteor, $rootScope, $state, $mdDialog, $filter, uiGmapIsReady, $timeout){
+/**
+ * indexCtrl
+ *   Controller of home page
+ */
 
+(function() {
+  'use strict';
+
+  angular
+      .module('gnarrly')
+      .controller('IndexCtrl', IndexCtrl);
+
+  function IndexCtrl($scope, $meteor, $rootScope, $state, $mdDialog, $filter, mapService, $timeout) {
     var vm = this;
 
-    vm.initialPageLoading = true;
+    activate();
 
-    // On google map is ready, show the ui controls
-    uiGmapIsReady.promise(1).then(function(instances) {
-        $timeout(function(){
-          vm.initialPageLoading = false;
-        },1500);
-    });
+    ////////////////
 
-    $scope.page = 1;
-    $scope.perPage = 3;
-    $scope.sort = { name: 1 };
-    $scope.orderProperty = '1';
+    function activate() {
+      // Pagination of data
+      $scope.page = 1;
+      $scope.perPage = 3;
+      $scope.sort = { name: 1 };
+      $scope.orderProperty = '1';
 
-    $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
-    $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
-    
-    // $rootScope.$watch('currentUser', function(newValue, oldValue) {
-    //   if (newValue !== oldValue) {
-    //     console.log('user: ',newValue);
-    //   }
-    // });
+      // Users, Images
+      $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
+      $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
 
-    // $scope.zones = $meteor.collection(function() {
-    //   return Zones.find({}, {
-    //     sort : $scope.getReactively('sort')
-    //   });
-    // });
+      
+      $meteor.subscribe('zones', {
+        limit: parseInt($scope.getReactively('perPage')),
+        skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
+        sort: $scope.getReactively('sort')
+      }).then(function(zonesHandle) {
+        // Zones
+        $scope.zones = $meteor.collection(Zones);
+        // $scope.zonesCount = $meteor.object(Counts ,'numberOfZones', false);
 
-    
-    $meteor.subscribe('zones', {
-      limit: parseInt($scope.getReactively('perPage')),
-      skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
-      sort: $scope.getReactively('sort')
-    }).then(function(zonesHandle) {
-      // Zones
-      $scope.zones = $meteor.collection(Zones);
-      // $scope.zonesCount = $meteor.object(Counts ,'numberOfZones', false);
+        // Setup click events
+        $scope.zones.forEach( function (zone) {
+          zone.onClicked = function () {
+            $state.go('zoneDetails', {zoneId: zone._id});
+          };
+        });
 
-      // Setup click events
-      $scope.zones.forEach( function (zone) {
-        zone.onClicked = function () {
-          $state.go('zoneDetails', {zoneId: zone._id});
+        // Map Style - needs to go in map service
+        var styleArray = [
+          {
+            featureType: "all",
+            stylers: [
+              { saturation: -80 }
+            ]
+          },{
+            featureType: "road.arterial",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#00ffee" },
+              { saturation: 50 }
+            ]
+          },{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
+
+        // Map default coordinates, zoom, --- again map service
+        $scope.map = {
+          center: {
+            latitude: 45,
+            longitude: -73
+          },
+          zoom: 8,
+          options: {
+            styles: styleArray
+          }
         };
       });
-
-      // Map Style - needs to go in map service
-      var styleArray = [
-        {
-          featureType: "all",
-          stylers: [
-            { saturation: -80 }
-          ]
-        },{
-          featureType: "road.arterial",
-          elementType: "geometry",
-          stylers: [
-            { hue: "#00ffee" },
-            { saturation: 50 }
-          ]
-        },{
-          featureType: "poi.business",
-          elementType: "labels",
-          stylers: [
-            { visibility: "off" }
-          ]
-        }
-      ];
-
-      // Map default coordinates, zoom, --- again map service
-      $scope.map = {
-        center: {
-          latitude: 45,
-          longitude: -73
-        },
-        zoom: 8,
-        options: {
-          styles: styleArray
-        }
-      };
-    });
-    
+    }
 
     $scope.remove = function(party){
       $scope.zones.splice( $scope.zones.indexOf(party), 1 );
@@ -183,4 +178,5 @@ angular.module("gnarrly").controller("IndexCtrl",
         }
       );
     };
-}]);
+  }
+})();

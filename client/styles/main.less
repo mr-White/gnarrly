@@ -15,8 +15,10 @@
 @washDark: #6E444F;
 
 // another style - playful purples and orange
+// 
+// 
 @pinkPurple: #EF92FF;
-@lightPurple: #AF4CD6;
+// @lightPurple: #AF4CD6;
 @purple2: #AF4CD6;
 @orange: #FFA70C;
 @darkRose: #59103E;
@@ -27,6 +29,11 @@
 @lightPurple2: #A500E7;
 @lightGreen: #12B46B;
 @green: #089A59;
+
+
+
+@color2: @white2;
+@color1: @lightPurple;
 
 /**
  * Includes
@@ -48,9 +55,9 @@ body {
 
 a {
 	text-decoration: none;
-	color: @yellow;
+	color: @color2;
 	&:hover {
-		color: lighten(@yellow, 10%);
+		color: lighten(@color2, 10%);
 	}
 }
 
@@ -83,16 +90,16 @@ a {
 }
 
 .ui-top-left {
-	left: 80px;
-	top: 25px;
+	left: 210px;
+    top: 25px;
 }
 .ui-top-right { // zone name position
 	left: 7px;
     bottom: 105px;
 }
 .ui-bot-left {
-	bottom: 30px;
-    left: 7px;
+	top: 10px;
+    left: 80px;
 }
 .ui-bot-right {
 	bottom: 30px; 
@@ -103,7 +110,7 @@ a {
  * Zone Name
  */
 .marker-name-alert {
-    @purpleButton();
+    @color2Button();
     h3 {
     	margin: 0;
     }
@@ -113,11 +120,11 @@ a {
  * Gnarrly Logo
  */
 .logo {
-	@purpleButton();
+	@color2Button();
 	a {
-		color: @yellow;
+		color: @color2;
 		&:hover {
-			color: lighten(@yellow, 10%);
+			color: lighten(@color2, 10%);
 		}
 		h1 {
 			margin: 0;
@@ -129,16 +136,16 @@ a {
  * User Auth + Menu
  */
 #login-buttons {
-	@purpleButton();
+	@color2Button();
 }
 #login-dropdown-list.accounts-dialog {
   left: -2px;
   top: 39px;
   a {
-  	color: @yellow;
+  	color: @color2;
   	float: right;
   	&:hover {
-  		color: lighten(@yellow, 10%);
+  		color: lighten(@color2, 10%);
   	}
   }
 }
@@ -147,7 +154,7 @@ a {
  * Create Content Button
  */
 .ui-add-btn {
-	@purpleButton();
+	@color2Button();
 	border-radius: 50%;
 	width: 90px;
 	height: 90px;
@@ -165,14 +172,14 @@ a {
 	text-decoration: none !important;
 }
 #login-dropdown-list.accounts-dialog {
-	background-color: @purple;
+	background-color: @color1;
 }
 #login-buttons .login-button, .accounts-dialog .login-button {
-	background-color: @yellow;
-	color: @purple;
-	border: 1px solid lighten(@yellow, 10%);
+	background-color: @color2;
+	color: @color1;
+	border: 1px solid lighten(@color2, 10%);
 	font-weight: bold;
 	&:hover {
-		background-color: lighten(@yellow, 10%);
+		background-color: lighten(@color2, 10%);
 	}
 }

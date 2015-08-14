@@ -10,6 +10,7 @@
         .module('gnarrly')
         .factory('mapService', mapService);
 
+    /* @ngInject */
     function mapService(uiGmapIsReady) {
         var service = {
             mapReady: mapReady

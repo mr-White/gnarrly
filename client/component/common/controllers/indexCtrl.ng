@@ -10,6 +10,7 @@
       .module('gnarrly')
       .controller('IndexCtrl', IndexCtrl);
 
+  /* @ngInject */
   function IndexCtrl($scope, $meteor, $rootScope, $state, $mdDialog, $filter, mapService, $timeout) {
     var vm = this;
 

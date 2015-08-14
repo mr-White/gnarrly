@@ -5,6 +5,7 @@
         .module('gnarrly')
         .config(routingConfig);
 
+    /* @ngInject */
     function routingConfig($urlRouterProvider, $stateProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 

@@ -1,0 +1,19 @@
+(function() {
+    'use strict';
+
+    angular
+        .module('gnarrly')
+        .run(mainInit);
+
+    function mainInit($rootScope, $location) {
+        // If a protected url is requested and requireUser fails
+        // redirect them to the main page
+        $rootScope.$on("$stateChangeError", function(event, next, previous, error) {
+		    // We can catch the error thrown when the $requireUser promise is rejected
+		    // and redirect the user back to the main page
+		    if (error === "AUTH_REQUIRED") {
+		      $location.path("/");
+		    }
+		});
+    }
+})();

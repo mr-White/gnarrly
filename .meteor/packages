@@ -27,3 +27,4 @@ underscore
 fortawesome:fontawesome
 angular:angular-animate
 jnissi:ng-annotate
+angularui:angular-ui-bootstrap

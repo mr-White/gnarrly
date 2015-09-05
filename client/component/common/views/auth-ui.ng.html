@@ -1,0 +1,15 @@
+<div id="auth-ui">
+	<!-- logged in -->
+	<div data-ng-if="$root.currentUser">
+		
+	</div>
+	<!-- logged out -->
+	<div data-ng-if="!$root.currentUser" class="sign-in-container">
+		<div>
+			Sign-In
+			<div class="dropdown" style="display:none">
+				Log in via Twitter, Facebook, or Email
+			</div>
+		</div>
+	</div>
+</div>

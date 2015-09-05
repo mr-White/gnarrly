@@ -1,0 +1,45 @@
+/**
+ * authUi directive
+ * 
+ * @description
+ *	Display logged out and logged in UI for logging in
+ */
+
+(function() {
+    'use strict';
+
+    angular
+        .module('gnarrly')
+        .directive('authUi', directive);
+
+    /* @ngInject */
+    function directive ($rootScope) {
+        var directive = {
+            bindToController: true,
+            controller: Controller,
+            controllerAs: 'authUiCtrl',
+            restrict: 'A',
+            templateUrl: 'client/component/common/views/auth-ui.ng.html',
+            replace: true
+        };
+        return directive;
+    }
+
+    /* @ngInject */
+    function Controller ($scope, $element, $attrs, $rootScope) {
+    	var vm = this;
+
+    	activate();
+
+    	///////////
+
+    	function activate() {
+    		// if (!$rootScope.currentUser) {
+    		// 	// not logged in
+	    	// } else {
+	    	// 	// logged in
+	    	// }
+	    	console.log('user: ', $rootScope.currentUser);
+    	}
+    }
+})();

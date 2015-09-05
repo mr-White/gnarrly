@@ -8,13 +8,16 @@
 <!-- User Interface -->
 <section data-ng-hide="layoutCtrl.mapsLoading" class="fade-in">
   <div id="auth-container">
-    <meteor-include src="loginButtons"></meteor-include>
+    <div auth-ui></div>
   </div>
   <!-- <div class="ui-top-right fade-in" data-ng-hide="IdxCtrl.initialPageLoading">
     <div class="marker-name-alert">
       <h3>Zone Name</h3>
     </div>
   </div> -->
+  <div class="ui-bot-left">
+    <meteor-include src="loginButtons"></meteor-include>
+  </div>
   <div id="logo-container">
     <div class="logo">
       <a href="/"><h1>Gnarrly</h1></a>

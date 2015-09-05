@@ -61,6 +61,15 @@ a {
 	}
 }
 
+button {
+	background: transparent;
+	border: 0;
+	outline: 0;
+}
+input {
+	outline: 0;
+}
+
 /**
  * Main Container for App
  */
@@ -89,6 +98,35 @@ a {
 }
 
 /**
+ * Search Container
+ */
+#search-container {
+    top: 10px;
+    left: 120px;
+    height: 55px; //same height as logo
+    form {
+    	input {
+    		@roundedButton();
+    		width: 250px;
+    		text-align: right;
+			border: 1px solid @color1;
+			height: 51px;
+			padding-left: .5em;
+			padding-right: .5em;
+			background-color: @color1;
+			color: @color2;
+    	}
+    	.fa {
+			color: @color1;
+			font-size: 2em;
+		    position: relative;
+		    top: 6px;
+		    left: 5px;
+    	}
+    }
+}
+
+/**
  * Google Map Container
  */
 .angular-google-map-container {
@@ -101,7 +139,7 @@ a {
 /**
  * User Interface Container
  */
-#auth-container, .ui-top-right, #logo-container, .ui-bot-right {
+#auth-container, .ui-top-right, #logo-container, .ui-bot-right, #search-container {
 	position: absolute;
 }
 

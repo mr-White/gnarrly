@@ -14,9 +14,22 @@
   function IndexCtrl($scope, $meteor, $rootScope, $state, $mdDialog, $filter, mapService, $timeout) {
     var vm = this;
 
+    vm.processSearch = processSearch;
+
     activate();
 
     ////////////////
+    
+
+    function processSearch() {
+      // Don't process empty searchs
+      if ($scope.search.query === '') {
+        return;
+      }
+
+      // We good, setup search flag so we don't search the samething twice
+      // actually use the $pristine flag of the form
+    }
 
     function activate() {
       // Pagination of data
@@ -24,6 +37,10 @@
       $scope.perPage = 3;
       $scope.sort = { name: 1 };
       $scope.orderProperty = '1';
+
+      // Search
+      $scope.search = {};
+      $scope.search.query = '';
 
       // Users, Images
       $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');

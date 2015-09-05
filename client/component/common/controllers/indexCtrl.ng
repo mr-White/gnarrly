@@ -11,7 +11,7 @@
       .controller('IndexCtrl', IndexCtrl);
 
   /* @ngInject */
-  function IndexCtrl($scope, $meteor, $rootScope, $state, $mdDialog, $filter, mapService, $timeout) {
+  function IndexCtrl($scope, $meteor, $rootScope, $state, $filter, mapService, $timeout) {
     var vm = this;
 
     vm.processSearch = processSearch;
@@ -125,22 +125,22 @@
     };
 
     $scope.openAddImageModal = function() {
-      $mdDialog.show({
-        controller: 'AddPhotoCtrl',
-        templateUrl: 'client/parties/views/add-photo-modal.ng.html',
-        scope: $scope.$new(),
-        locals: {
-          newOrder: $scope.newPartyImages ? $scope.newPartyImages.length : 0
-        },
-        parent: angular.element(document.body)
-      }).then(function(image) {
-        if (image) {
-          if (!$scope.newPartyImages) {
-            $scope.newPartyImages = [];
-          }
-          $scope.newPartyImages.push(image);
-        }
-      })
+      // $mdDialog.show({
+      //   controller: 'AddPhotoCtrl',
+      //   templateUrl: 'client/parties/views/add-photo-modal.ng.html',
+      //   scope: $scope.$new(),
+      //   locals: {
+      //     newOrder: $scope.newPartyImages ? $scope.newPartyImages.length : 0
+      //   },
+      //   parent: angular.element(document.body)
+      // }).then(function(image) {
+      //   if (image) {
+      //     if (!$scope.newPartyImages) {
+      //       $scope.newPartyImages = [];
+      //     }
+      //     $scope.newPartyImages.push(image);
+      //   }
+      // })
     };
 
     $scope.updateOrder = function(sortedArr) {

@@ -7,11 +7,12 @@ angular.module('gnarrly',[
   'ui.router',
   'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',
-  'ngMaterial',
+  // 'ngMaterial',
   'ngFileUpload',
   'ngImgCrop',
   'xeditable',
-  'angular-sortable-view'
+  'angular-sortable-view',
+  'ui.bootstrap'
 ]);
 
 /**

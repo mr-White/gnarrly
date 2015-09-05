@@ -1,12 +1,18 @@
 <div id="auth-ui">
 	<!-- logged in -->
 	<div data-ng-if="$root.currentUser">
-		username + avatar<br />
-		<ul>
-			<li>Profile</li>
-			<li>Settings</li>
-			<li>Drafts</li>
-		</ul>
+		<span dropdown>
+	      <a href id="simple-dropdown" dropdown-toggle>
+	        username + avatar
+	      </a>
+	      <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+	        <ul>
+				<li>Profile</li>
+				<li>Settings</li>
+				<li>Drafts</li>
+			</ul>
+	      </ul>
+	    </span>
 	</div>
 	<!-- logged out -->
 	<div data-ng-if="!$root.currentUser">

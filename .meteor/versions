@@ -8,6 +8,8 @@ accounts-ui-unstyled@1.1.7
 alexk111:ng-img-crop@0.3.2
 angular:angular@1.4.0
 angular:angular-animate@1.4.0
+angular:angular-aria@1.4.0
+angular:angular-material@0.10.1
 angularui:angular-google-maps@2.1.0
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.14
@@ -91,6 +93,7 @@ stevezhu:lodash@1.0.2
 templating@1.1.1
 tmeasday:publish-counts@0.3.9
 tracker@1.0.7
+twbs:bootstrap@3.3.5
 twitter@1.1.4
 ui@1.0.6
 underscore@1.0.3

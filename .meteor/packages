@@ -15,6 +15,7 @@ tmeasday:publish-counts
 email
 angularui:angular-google-maps
 less
+angular:angular-material
 cfs:standard-packages
 cfs:gridfs
 danialfarid:ng-file-upload
@@ -26,3 +27,4 @@ fortawesome:fontawesome
 angular:angular-animate
 jnissi:ng-annotate
 angularui:angular-ui-bootstrap
+twbs:bootstrap

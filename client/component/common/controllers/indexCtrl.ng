@@ -71,14 +71,30 @@
 
         // Map default coordinates, zoom, --- again map service
         $scope.map = {
-          center: {
-            latitude: 45,
-            longitude: -73
-          },
-          zoom: 8,
+          zoom: 4,
+          center: {latitude: -33, longitude: 151},
           options: {
-            styles: styleArray
+            styles: styleArray,
+            disableDefaultUI: true,
           }
+          // zoom: 8,
+          // options: {
+          //   styles: styleArray
+          // },
+          // disableDefaultUI: true,
+          // zoomControl: false,
+          // mapTypeControl: false,
+          // scaleControl: false,
+          // streetViewControl: false,
+          // 
+          // zoomControlOptions: {
+          //   style: google.maps.ZoomControlStyle.SMALL
+          // }
+          // mapTypeControl: true,
+          // mapTypeControlOptions: {
+          //     style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+          //     position: google.maps.ControlPosition.TOP_CENTER
+          // },
         };
       });
     }

@@ -6,7 +6,7 @@
   </ui-gmap-google-map>
 </section>
 <!-- User Interface -->
-<div class="ui-top-left fade-in" data-ng-hide="layoutCtrl.mapsLoading">
+<div id="auth-container" class="fade-in" data-ng-hide="layoutCtrl.mapsLoading">
   <meteor-include src="loginButtons"></meteor-include>
 </div>
 <!-- <div class="ui-top-right fade-in" data-ng-hide="IdxCtrl.initialPageLoading">
@@ -14,7 +14,7 @@
     <h3>Zone Name</h3>
   </div>
 </div> -->
-<div class="ui-bot-left fade-in" data-ng-hide="layoutCtrl.mapsLoading">
+<div id="logo-container" class="fade-in" data-ng-hide="layoutCtrl.mapsLoading">
   <div class="logo">
     <!-- toggle map view vs. content view -->
     <a href="/"><h1>Gnarrly</h1></a>

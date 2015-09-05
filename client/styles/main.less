@@ -188,10 +188,11 @@ input {
  */
 #login-buttons {
 	@color2Button();
+	height: 33px;
 }
 #login-dropdown-list.accounts-dialog {
-  left: -2px;
-  top: 39px;
+  right: -2px;
+  top: 54px;
   a {
   	color: @color2;
   	float: right;
@@ -199,6 +200,10 @@ input {
   		color: lighten(@color2, 10%);
   	}
   }
+}
+.login-link-text {
+	position: relative;
+    top: 8px;
 }
 
 /**

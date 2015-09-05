@@ -1,15 +1,15 @@
 <div id="auth-ui">
 	<!-- logged in -->
 	<div data-ng-if="$root.currentUser">
-		
+		username + avatar<br />
+		<ul>
+			<li>Profile</li>
+			<li>Settings</li>
+			<li>Drafts</li>
+		</ul>
 	</div>
 	<!-- logged out -->
-	<div data-ng-if="!$root.currentUser" class="sign-in-container">
-		<div>
-			Sign-In
-			<div class="dropdown" style="display:none">
-				Log in via Twitter, Facebook, or Email
-			</div>
-		</div>
+	<div data-ng-if="!$root.currentUser">
+		<meteor-include src="loginButtons"></meteor-include>
 	</div>
 </div>
